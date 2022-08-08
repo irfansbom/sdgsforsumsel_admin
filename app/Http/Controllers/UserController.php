@@ -161,7 +161,7 @@ class UserController extends Controller
     public function permissions()
     {
         $auth = Auth::user();
-        $permission = Permission::all();
+        $permission = Permission::paginate(15);
         return view('user/permissions', compact('permission', 'auth'));
     }
 

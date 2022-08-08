@@ -59,6 +59,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                {{ $permission->links() }}
                             </div>
                         </div>
                     </div>

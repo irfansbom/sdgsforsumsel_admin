@@ -32,7 +32,11 @@ class TujuanController extends Controller
         $id = Crypt::decryptString($id);
         $tujuan = Tujuan::find($id);
         $tujuan->penjelasan = $request->penjelasan;
-        $tujuan->save();
-        return redirect()->back()->with('success', 'Berhasil Diupate');
+        $tujuan->updated_by = $auth->id;
+        if ($tujuan->save()) {
+            return redirect()->back()->with('success', 'Berhasil Diupate');
+        } else {
+            return redirect()->back()->with('error', 'Gagal Diupdate');
+        }
     }
 }

@@ -47,7 +47,8 @@
                                                     <td class="px-3 align-middle">
                                                         {{ $role['name'] }}
                                                     </td>
-                                                    <td class="px-3 align-middle">
+                                                    <td class="px-3 align-middle"
+                                                        style="word-break: break-word; overflow-wrap: break-word; white-space:initial">
                                                         @foreach ($role['permissions'] as $permission)
                                                             <span class="badge bg-primary">{{ $permission->name }}</span>
                                                         @endforeach
@@ -84,7 +85,7 @@
     </div>
 
     <div class="modal fade" id="modal_tambah">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
                     <h6 class="modal-title">Add Roles</h6>
@@ -107,15 +108,19 @@
                             </div>
                         </div>
                         Permissions
-                        @foreach ($data_permission as $perm)
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{ $perm->name }}"
-                                    name="permissions[]" id="{{ $perm->name }}">
-                                <label class="form-check-label" for="{{ $perm->name }}">
-                                    {{ $perm->name }}
-                                </label>
-                            </div>
-                        @endforeach
+                        <div class="row">
+                            @foreach ($data_permission as $perm)
+                                <div class="col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $perm->name }}"
+                                            name="permissions[]" id="{{ $perm->name }}">
+                                        <label class="form-check-label" for="{{ $perm->name }}">
+                                            {{ $perm->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

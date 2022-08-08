@@ -154,8 +154,10 @@
                                         <li><a href="{{ url('target') }}" class="slide-item">Target</a>
                                         </li>
                                     @endif
-                                    <li><a href="{{ url('indikator') }}" class="slide-item">Indikator</a>
-                                    </li>
+                                    @if ($auth->can('indikator_list'))
+                                        <li><a href="{{ url('indikator') }}" class="slide-item">Indikator</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                             <li class="slide">
