@@ -89,13 +89,13 @@ class UserController extends Controller
                 'password' => Hash::make($request->password),
                 'updated_by' =>  $auth->id,
             ]);
-        return redirect()->back()->with('message', 'Berhasil Disimpan');
+        return redirect()->back()->with('success', 'Berhasil Disimpan');
     }
 
     public function delete(Request $request)
     {
         User::where('id', $request->user_id)->delete();
-        return redirect()->back()->with('message', 'Berhasil Dihapus');
+        return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
 
 
@@ -105,7 +105,7 @@ class UserController extends Controller
             ->update([
                 'password' => Hash::make($request->password),
             ]);
-        return redirect()->back()->with('message', 'Berhasil Disimpan');
+        return redirect()->back()->with('success', 'Berhasil Disimpan');
     }
 
 
@@ -113,7 +113,7 @@ class UserController extends Controller
     {
         $user = User::find($request->user_id);
         $user->syncRoles([$request->roles]);
-        return redirect('users/')->with('message', 'User berhasil diperbaharui.');
+        return redirect('users/')->with('success', 'User berhasil diperbaharui.');
     }
 
     public function roles()

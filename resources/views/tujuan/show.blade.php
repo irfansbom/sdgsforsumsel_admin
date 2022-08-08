@@ -47,28 +47,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="ubahpwmodal" tabindex="-1" aria-labelledby="ubahpwmodallabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="pwmodallabel">Ubah Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3 needs-validation" id="form_ubah_pw" action="{{ url('/tujuans/ubahpassword') }}"
-                        method="POST">
-                        @csrf<input type="text" name="id" id="id_form_ubah_pw" hidden
-                            value="{{ old('id', $tujuan->id) }}">
-                        <input type="text" class="form-control" name="password" value="{{ old('password') }}"
-                            id="password_form_ubah_pw">
-                        <input type="text" class="form-control" name="password_confirm"
-                            id="password_confirm_form_ubah_pw" value="{{ old('password_confirm') }}">
-                        <button class="btn btn-danger" type="submit" id="submit_ubah_pw">Ubah Password</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('script')

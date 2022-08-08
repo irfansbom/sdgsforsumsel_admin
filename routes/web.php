@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TargetController;
 use App\Http\Controllers\TujuanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,13 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+
+    Route::get('target', [TargetController::class, 'index']);
+    Route::get('target/create', [TargetController::class, 'create']);
+    Route::post('target/store', [TargetController::class, 'store']);
+    Route::get('target/{id}', [TargetController::class, 'show']);
+    Route::post('target/update', [TargetController::class, 'update']);
+    Route::post('target/delete', [TargetController::class, 'delete']);
 
     Route::get('tujuan', [TujuanController::class, 'index']);
     Route::get('tujuan/{id}', [TujuanController::class, 'show']);
