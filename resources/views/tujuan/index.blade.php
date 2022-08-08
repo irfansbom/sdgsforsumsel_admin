@@ -6,9 +6,9 @@
             <div class="main-container container-fluid">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Users</h1>
+                        <h1 class="page-title">Tujuan</h1>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('tujuan') }}">Tujuan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">List</li>
                         </ol>
                     </div>
@@ -17,82 +17,50 @@
                     <div class="col-12 col-sm-12">
                         <div class="card ">
                             <div class="card-header">
-                                <h3 class="card-title mb-0">List Users</h3>
+                                <h3 class="card-title mb-0">List Tujuan</h3>
                                 <div class="ms-auto pageheader-btn">
-                                    <a class="btn btn-primary btn-icon text-white me-2" href="{{ url('users/create') }}"
+                                    {{-- <a class="btn btn-primary btn-icon text-white me-2" href="{{ url('users/create') }}"
                                         data-bs-target="#modal_tambah">
                                         <span>
                                             <i class="fe fe-plus"></i>
                                         </span> Tambah
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table border table-bordered text-nowrap text-md-nowrap mg-b-0 table-sm">
                                         <thead>
-                                            <tr class="text-center align-middle">
+                                            <tr class="text-center align-top">
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Instansi</th>
-                                                <th>Email</th>
-                                                <th colspan="2">Roles</th>
+                                                <th style="width: 16%">Tujuan</th>
+                                                <th style="width: 70%">Pencapaian</th>
                                                 <th style="width: 8%">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="align-middle">
-                                            @foreach ($user as $key => $usr)
-                                                <tr class="align-middle">
-                                                    <td class="text-center align-middle">{{ ++$key }}</td>
-                                                    <td class="align-middle">
-                                                        {{ $usr->name }}
+                                        <tbody class="align-top">
+                                            @foreach ($tujuans as $key => $tuj)
+                                                <tr class="align-top">
+                                                    <td class="text-center align-top">{{ ++$key }}</td>
+                                                    <td class="align-top"
+                                                        style="word-wrap: break-word; overflow-wrap: break-word; white-space:initial">
+                                                        {{ $tuj->nama_tujuan }}
                                                     </td>
-                                                    <td class="align-middle">{{ $usr->instansi }}</td>
-                                                    <td class="align-middle"
-                                                        style="word-break: break-word; overflow-wrap: break-word;">
-                                                        {{ $usr->email }}</td>
-                                                    <td class="align-middle">
-                                                        <ul class="m-0">
-                                                            @foreach ($usr->roles->pluck('name') as $role)
-                                                                <li>{{ $role }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        @if (in_array('SUPER ADMIN', $auth->getRoleNames()->toArray()))
-                                                            <button
-                                                                class="btn btn-outline-secondary btn_roles"data-bs-toggle="modal"
-                                                                data-bs-target="#modal_edit_roles"
-                                                                data-id="{{ $usr->id }}"
-                                                                data-roles="{{ $usr->roles }}"
-                                                                data-nama="{{ $usr->name }}">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>
-                                                        @else
-                                                            <button class="btn btn-outline-secondary"> <i
-                                                                    class="bi bi-pencil"></i></button>
-                                                        @endif
-                                                    </td>
-
-
+                                                    <td class="align-top"
+                                                        style="word-break: break-word; overflow-wrap: break-word; white-space:initial">
+                                                        {{ $tuj->penjelasan }}</td>
                                                     <td class="text-center">
                                                         <a class="btn btn-outline-primary "
-                                                            href="{{ url('users/' . \Crypt::encryptString($usr->id)) }}">
+                                                            href="{{ url('tujuan/' . \Crypt::encryptString($tuj->id)) }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
-                                                        <button class="btn btn-outline-danger  btn_hapus"
-                                                            data-id="{{ $usr->id }}" data-nama="{{ $usr->name }}"
-                                                            data-bs-toggle="modal" data-bs-target="#modal_hapus">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
+
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-
-                                {{ $user->links() }}
                             </div>
                         </div>
                     </div>
@@ -126,7 +94,7 @@
 
                         </div>
                         Roles
-                        @foreach ($data_roles as $role)
+                        {{-- @foreach ($data_roles as $role)
                             <div class="form-check">
                                 <input class="form-check-input roles" type="checkbox" value="{{ $role->name }}"
                                     name="roles[]" id="{{ $role->name }}">
@@ -134,7 +102,7 @@
                                     {{ $role->name }}
                                 </label>
                             </div>
-                        @endforeach
+                        @endforeach --}}
 
                     </form>
                 </div>
@@ -149,7 +117,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_hapus">
+    {{-- <div class="modal fade" id="modal_hapus">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -177,7 +145,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('script')

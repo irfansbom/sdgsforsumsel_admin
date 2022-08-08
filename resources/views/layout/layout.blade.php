@@ -70,7 +70,7 @@
                                             <a href="javascript:void(0);" data-bs-toggle="dropdown"
                                                 class="nav-link leading-none d-flex px-1">
                                                 <span>
-                                                    <img src="{{ url('assets/images/users/8.jpg') }}"
+                                                    <img src="{{ url('assets/images/users/8.png') }}"
                                                         alt="profile-user"
                                                         class="avatar  profile-user brround cover-image">
                                                 </span>
@@ -146,8 +146,10 @@
                                         class="angle fa fa-angle-right"></i></a>
                                 <ul class="slide-menu">
                                     <li class="side-menu-label1"><a href="javascript:void(0)">Submenus</a></li>
-                                    <li><a href="{{ url('tujuan') }}" class="slide-item">Tujuan</a>
-                                    </li>
+                                    @if ($auth->can('tujuan_list'))
+                                        <li><a href="{{ url('tujuan') }}" class="slide-item">Tujuan</a>
+                                        </li>
+                                    @endif
                                     <li><a href="{{ url('target') }}" class="slide-item">Target</a>
                                     </li>
                                     <li><a href="{{ url('indikator') }}" class="slide-item">Indikator</a>
@@ -161,12 +163,18 @@
                                         class="angle fa fa-angle-right"></i></a>
                                 <ul class="slide-menu">
                                     <li class="side-menu-label1"><a href="javascript:void(0)">Submenus</a></li>
-                                    <li><a href="{{ url('users') }}" class="slide-item">Users</a>
-                                    </li>
-                                    <li><a href="{{ url('roles') }}" class="slide-item">Roles</a>
-                                    </li>
-                                    <li><a href="{{ url('permissions') }}" class="slide-item">Permission</a>
-                                    </li>
+                                    @if ($auth->can('user_list'))
+                                        <li><a href="{{ url('users') }}" class="slide-item">Users</a>
+                                        </li>
+                                    @endif
+                                    @if ($auth->can('roles'))
+                                        <li><a href="{{ url('roles') }}" class="slide-item">Roles</a>
+                                        </li>
+                                    @endif
+                                    @if ($auth->can('permission'))
+                                        <li><a href="{{ url('permissions') }}" class="slide-item">Permission</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>

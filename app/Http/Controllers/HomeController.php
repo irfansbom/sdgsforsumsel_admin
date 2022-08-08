@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $auth = Auth::user();
+        // dd($auth->can('user_list'));
         return view('home', compact('request', 'auth'));
     }
 }
