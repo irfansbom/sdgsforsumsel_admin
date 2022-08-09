@@ -34,7 +34,7 @@
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ url('assets/colors/color1.css') }}" />
 
 
-
+    @yield('css')
 </head>
 
 <body class="app sidebar-mini ltr light-mode">
@@ -138,6 +138,25 @@
                                 <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/') }}"><i
                                         class="side-menu__icon fe fe-home"></i><span
                                         class="side-menu__label">Home</span></a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
+                                    <i class="side-menu__icon fe fe-database"></i>
+                                    <span class="side-menu__label">Data</span><i
+                                        class="angle fa fa-angle-right"></i></a>
+                                <ul class="slide-menu">
+                                    <li class="side-menu-label1"><a href="javascript:void(0)">Submenus</a></li>
+                                    @if ($auth->can('target_capaian_list'))
+                                        <li><a href="{{ url('target_capaian') }}" class="slide-item">Target &
+                                                Capaian</a>
+                                        </li>
+                                    @endif
+                                    @if ($auth->can('penunjang_data_list'))
+                                        <li><a href="{{ url('penunjang_data') }}" class="slide-item">Data
+                                                Penunjang</a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </li>
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">

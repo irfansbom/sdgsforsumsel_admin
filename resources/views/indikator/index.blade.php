@@ -36,8 +36,8 @@
                                         <thead>
                                             <tr class="text-center align-top">
                                                 <th>No</th>
-                                                <th style="width: 16%">ID Indikator</th>
-                                                <th style="width: 70%">Nama Indikator</th>
+                                                <th>ID Indikator</th>
+                                                <th>Nama Indikator</th>
                                                 <th style="width: 8%">Aksi</th>
                                             </tr>
                                         </thead>

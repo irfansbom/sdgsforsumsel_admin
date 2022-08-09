@@ -53,7 +53,7 @@ class CreateTable extends Migration
             $table->id();
             $table->char('id_tujuan', 2);
             $table->char('id_target', 5);
-            $table->char('id_indikator', 8)->unique();
+            $table->char('id_indikator', 8);
             $table->char('kd_wilayah', 5);
             $table->char('tahun', 5);
             $table->float('data');
@@ -66,7 +66,7 @@ class CreateTable extends Migration
             $table->id();
             $table->char('id_tujuan', 2);
             $table->char('id_target', 5);
-            $table->char('id_indikator', 8)->unique();
+            $table->char('id_indikator', 8);
             $table->char('kd_wilayah', 5);
             $table->char('tahun', 5);
             $table->float('data');

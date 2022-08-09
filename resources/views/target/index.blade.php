@@ -36,8 +36,8 @@
                                         <thead>
                                             <tr class="text-center align-top">
                                                 <th>No</th>
-                                                <th style="width: 16%">ID Target</th>
-                                                <th style="width: 70%">Nama Target</th>
+                                                <th>ID Target</th>
+                                                <th>Nama Target</th>
                                                 <th style="width: 8%">Aksi</th>
                                             </tr>
                                         </thead>

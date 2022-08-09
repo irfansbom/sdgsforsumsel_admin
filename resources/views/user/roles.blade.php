@@ -168,7 +168,7 @@
                 <div class="modal-body">
                     <form action="{{ url('roles/edit') }}" method="post" id="edit_form">
                         @csrf
-                        <div class="row">
+                        <div class="row col">
                             <input type="text" name="id" id="role_id" hidden>
                             <div class="mb-3 col-6">
                                 <label for="name_role" class="form-label">Nama Role</label>
@@ -181,15 +181,27 @@
                             </div>
                         </div>
                         Permissions
-                        <div class="row">
+                        {{-- <div class="row">
                             @foreach ($data_permission as $perm)
                                 <div class="col-3">
                                     <div class="form-check">
-                                        <input class="form-check-input permission" type="checkbox"
-                                            value="{{ $perm->name }}" name="permissions[]" id="{{ $perm->name }}">
+                                        <input class="form-check-input" type="checkbox" value="{{ $perm->name }}"
+                                            name="permissions[]" id="{{ $perm->name }}">
                                         <label class="form-check-label" for="{{ $perm->name }}">
                                             {{ $perm->name }}
                                         </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div> --}}
+                        <div class="row">
+                            @foreach ($data_permission as $keys => $perm)
+                                <div class="col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $perm->name }}"
+                                            name="permissions[]" id="{{ $perm->name . '2' }}">
+                                        <label class="form-check-label"
+                                            for="{{ $perm->name . '2' }}">{{ $perm->name }}</label>
                                     </div>
                                 </div>
                             @endforeach

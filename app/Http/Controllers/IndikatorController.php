@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class IndikatorController extends Controller
 {
-    //
+    
     public function index()
     {
         $auth = Auth::user();
