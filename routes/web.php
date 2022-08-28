@@ -3,7 +3,9 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TargetCapaianController;
 use App\Http\Controllers\TargetController;
 use App\Http\Controllers\TujuanController;
@@ -12,11 +14,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('register', [LoginController::class, 'register']);
+Route::post('register', [LoginController::class, 'store']);
 Route::post('authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('reload-captcha', [LoginController::class, 'reloadCaptcha']);
+Route::get('verifikasi', [LoginController::class, 'verifikasi'])->name('verifikasi');
+Route::post('send_kode', [LoginController::class, 'send_kode']);
+Route::post('verifikasi_kode', [LoginController::class, 'verifikasi_kode']);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+
+    Route::resource('program', ProgramController::class);
+    Route::resource('kegiatan', KegiatanController::class);
 
     Route::resource('target_capaian', TargetCapaianController::class);
 

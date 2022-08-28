@@ -435,7 +435,7 @@
 
 .gradient-header .app-header,
 .gradient-header .hor-header {
-    background: linear-gradient(to right, var(--primary-bg-color) 0%, #9e88f5 100%) !important;
+    background: linear-gradient(to right, var(--primary-bg-color) 0%, var(--gradient2) 100%) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1135,7 +1135,7 @@
 }
 
 .gradient-menu .app-sidebar {
-    background: linear-gradient(to bottom, var(--primary-bg-color) 0%, #9e88f5 100%) !important;
+    background: linear-gradient(to bottom, var(--primary-bg-color) 0%, var(--gradient2) 100%) !important;
 }
 
 .gradient-menu .app-sidebar .side-item.side-item-category {

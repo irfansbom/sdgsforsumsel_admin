@@ -37,7 +37,7 @@
     @yield('css')
 </head>
 
-<body class="app sidebar-mini ltr light-mode">
+<body class="app sidebar-mini ltr light-mode gradient-header color-menu">
 
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
@@ -138,6 +138,23 @@
                                 <a class="side-menu__item" data-bs-toggle="slide" href="{{ url('/') }}"><i
                                         class="side-menu__icon fe fe-home"></i><span
                                         class="side-menu__label">Home</span></a>
+                            </li>
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
+                                    <i class="side-menu__icon fe fe-database"></i>
+                                    <span class="side-menu__label">Program, Kegiatan, Upaya</span><i
+                                        class="angle fa fa-angle-right"></i></a>
+                                <ul class="slide-menu">
+                                    <li class="side-menu-label1"><a href="javascript:void(0)">Submenus</a></li>
+                                    @if ($auth->can('program_list'))
+                                        <li><a href="{{ url('program') }}" class="slide-item">Program</a>
+                                        </li>
+                                    @endif
+                                    @if ($auth->can('kegiatan_list'))
+                                        <li><a href="{{ url('kegiatan') }}" class="slide-item">Kegiatan</a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </li>
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
@@ -265,36 +282,26 @@
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
     <!-- JQUERY JS -->
-
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <!-- BOOTSTRAP JS -->
     <script src="{{ url('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ url('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <!-- SPARKLINE JS-->
     <script src="{{ url('assets/js/jquery.sparkline.min.js') }}"></script>
 
     <!-- CHART-CIRCLE JS-->
     <script src="{{ url('assets/js/circle-progress.min.js') }}"></script>
 
     <!-- CHARTJS CHART JS-->
-    <script src="{{ url('assets/plugins/chart/Chart.bundle.js') }}"></script>
+    <script src="{{ url('/assets/plugins/chart/Chart.bundle.js') }}"></script>
     <script src="{{ url('assets/plugins/chart/utils.js') }}"></script>
 
     <!-- PIETY CHART JS-->
     <script src="{{ url('assets/plugins/peitychart/jquery.peity.min.js') }}"></script>
     <script src="{{ url('assets/plugins/peitychart/peitychart.init.js') }}"></script>
 
-    <!-- INTERNAL SELECT2 JS -->
-    <script src="{{ url('assets/plugins/select2/select2.full.min.js') }}"></script>
-
-    <!-- INTERNAL Data tables js-->
-    <script src="{{ url('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-    <script src="{{ url('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-
-    <!-- ECHART JS-->
-    <script src="{{ url('assets/plugins/echarts/echarts.js') }}"></script>
+    <!-- INPUT MASK JS-->
+    <script src="{{ url('assets/plugins/input-mask/jquery.mask.min.js') }}"></script>
 
     <!-- SIDE-MENU JS-->
     <script src="{{ url('assets/plugins/sidemenu/sidemenu.js') }}"></script>
@@ -306,9 +313,71 @@
     <script src="{{ url('assets/plugins/sidebar/sidebar.js') }}"></script>
 
     <!-- Perfect SCROLLBAR JS-->
-    {{-- <script src="{{ url('assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script> --}}
-    {{-- <script src="{{ url('assets/plugins/p-scroll/pscroll.js') }}"></script>
-    <script src="{{ url('assets/plugins/p-scroll/pscroll-1.js') }}"></script> --}}
+    <script src="{{ url('assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
+    <script src="{{ url('assets/plugins/p-scroll/pscroll.js') }}"></script>
+    <script src="{{ url('assets/plugins/p-scroll/pscroll-1.js') }}"></script>
+
+    <!-- FILE UPLOADES JS -->
+    <script src="{{ url('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ url('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+
+    <!-- INTERNAL Bootstrap-Datepicker js-->
+    <script src="{{ url('assets/plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- INTERNAL File-Uploads Js-->
+    <script src="{{ url('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ url('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ url('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ url('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ url('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+
+    <!-- SELECT2 JS -->
+    <script src="{{ url('assets/plugins/select2/select2.full.min.js') }}"></script>
+
+    <!-- INTERNAL Data tables js-->
+    <script src="{{ url('assets/plugins/datatable/js/jquery.dataTables.min.j') }}s"></script>
+    <script src="{{ url('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ url('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+
+    <!-- ECHART JS-->
+    <script src="{{ url('assets/plugins/echarts/echarts.js') }}"></script>
+
+    <!-- BOOTSTRAP-DATERANGEPICKER JS -->
+    <script src="{{ url('assets/plugins/bootstrap-daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url('assets/plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- INTERNAL Bootstrap-Datepicker js-->
+    <script src="{{ url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- INTERNAL Sumoselect js-->
+    <script src="{{ url('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+
+    <!-- TIMEPICKER JS -->
+    <script src="{{ url('assets/plugins/time-picker/jquery.timepicker.js') }}"></script>
+    <script src="{{ url('assets/plugins/time-picker/toggles.min.js') }}"></script>
+
+    <!-- INTERNAL intlTelInput js-->
+    <script src="{{ url('assets/plugins/intl-tel-input-master/intlTelInput.js') }}"></script>
+    <script src="{{ url('assets/plugins/intl-tel-input-master/country-select.js') }}"></script>
+    <script src="{{ url('assets/plugins/intl-tel-input-master/utils.js') }}"></script>
+
+    <!-- INTERNAL jquery transfer js-->
+    <script src="{{ url('assets/plugins/jQuerytransfer/jquery.transfer.js') }}"></script>
+
+    <!-- DATEPICKER JS -->
+    <script src="{{ url('assets/plugins/date-picker/date-picker.js') }}"></script>
+    <script src="{{ url('assets/plugins/date-picker/jquery-ui.js') }}"></script>
+    <script src="{{ url('assets/plugins/input-mask/jquery.maskedinput.js') }}"></script>
+
+    <!-- MULTI SELECT JS-->
+    <script src="{{ url('assets/plugins/multipleselect/multiple-select.js') }}"></script>
+    <script src="{{ url('assets/plugins/multipleselect/multi-select.js') }}"></script>
+    <!-- INTERNAL multi js-->
+    <script src="{{ url('assets/plugins/multi/multi.min.js') }}"></script>
+
+    <!-- FORMELEMENTS JS -->
+    <script src="{{ url('assets/js/formelementadvnced.js') }}"></script>
+    <script src="{{ url('assets/js/form-elements.js') }}"></script>
 
     <!-- APEXCHART JS -->
     <script src="{{ url('assets/js/apexcharts.js') }}"></script>

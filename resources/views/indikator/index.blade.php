@@ -48,9 +48,12 @@
                                                     <td class="text-center align-middle">
                                                         {{ $ind->id_indikator }}
                                                     </td>
-                                                    <td class="align-top"
+                                                    <td class="align-middle"
                                                         style="word-break: break-word; overflow-wrap: break-word; white-space:initial">
-                                                        {{ $ind->nama_indikator }}</td>
+                                                        <a href="target_capaian?indikator_filter={{ $ind->id_indikator }}"
+                                                            target="_blank">
+                                                            {{ $ind->nama_indikator }}</a>
+                                                    </td>
                                                     <td class="text-center">
                                                         @if ($auth->can('indikator_edit'))
                                                             <a class="btn btn-outline-primary "

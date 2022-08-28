@@ -49,10 +49,8 @@
         <!-- PAGE -->
         <div class="page">
             <div class="">
-
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto">
-
                 </div>
                 <div class="container-login100">
                     <div class="wrap-login100 p-0">
@@ -87,7 +85,7 @@
                                     </button>
                                 </div>
                                 <div class="text-center pt-3">
-                                    <p class="text-dark mb-0">Not a member?<a href="register.html"
+                                    <p class="text-dark mb-0">Not a member?<a href="{{ url('register') }}"
                                             class="text-primary ms-1">Create an Account</a></p>
                                 </div>
                             </form>
