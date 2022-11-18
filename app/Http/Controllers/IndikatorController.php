@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Indikator;
+use App\Models\Program;
 use App\Models\Target;
 use App\Models\Tujuan;
 use Illuminate\Database\QueryException;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class IndikatorController extends Controller
 {
-    
+
     public function index()
     {
         $auth = Auth::user();
@@ -113,6 +114,16 @@ class IndikatorController extends Controller
     public function get_indikator(Request $request)
     {
         $data = Indikator::where('id_target', $request->id_target)->get()->toArray();
+        return response(
+            [
+                'data' => $data,
+            ],
+            200
+        );
+    }
+    public function get_program(Request $request)
+    {
+        $data = Program::where('id_tujuan', $request->id_tujuan)->get()->toArray();
         return response(
             [
                 'data' => $data,

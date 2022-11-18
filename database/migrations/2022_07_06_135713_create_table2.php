@@ -31,6 +31,7 @@ class CreateTable2 extends Migration
             $table->char('id_indikator', 8);
             $table->string('nama_program');
             $table->string('pelaku')->nullable();
+            $table->string('tahun')->nullable();
             $table->float('anggaran')->nullable();
             $table->char('flag', 2)->default('1');;
             $table->char('created_by', 5)->nullable();
@@ -47,6 +48,7 @@ class CreateTable2 extends Migration
             $table->string('nama_kegiatan');
             $table->string('pelaku')->nullable();
             $table->float('anggaran')->nullable();
+            $table->char('tahun', 5)->nullable();
             $table->char('flag', 2)->default('1');;
             $table->char('created_by', 5)->nullable();
             $table->char('updated_by', 5)->nullable();

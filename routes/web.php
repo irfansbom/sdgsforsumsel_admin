@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('indikator', IndikatorController::class);
     Route::get('/get_target', [IndikatorController::class, 'get_target']);
     Route::get('/get_indikator', [IndikatorController::class, 'get_indikator']);
+    Route::get('/get_program', [IndikatorController::class, 'get_program']);
 
     Route::get('target', [TargetController::class, 'index']);
     Route::get('target/create', [TargetController::class, 'create']);

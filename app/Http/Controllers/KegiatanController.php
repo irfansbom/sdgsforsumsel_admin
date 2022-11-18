@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Indikator;
+use App\Models\Kabs;
+use App\Models\Kegiatan;
+use App\Models\Target;
+use App\Models\Tujuan;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KegiatanController extends Controller
 {
@@ -11,9 +18,20 @@ class KegiatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $auth = Auth::user();
+        $kabs = Kabs::all();
+        $tujuans = Tujuan::all();
+        $targets = Target::where('id_tujuan', $request->tujuan_filter)->get();
+        $indikators = Indikator::where('id_target', $request->target_filter)->get();
+        $select_indikator = Indikator::where('id_indikator', $request->indikator_filter)->first();
+        $data = Kegiatan::where('nama_kegiatan', 'LIKE', '%' . $request->nama_filter . '%')
+            ->where('id_tujuan', 'LIKE', '%' . $request->tujuan_filter . '%')
+            ->orderby('tahun')
+            ->paginate(15);
+        return view('kegiatan.index', compact('auth', 'kabs', 'tujuans', 'targets', 'indikators', 'data', 'select_indikator'));
     }
 
     /**
@@ -34,7 +52,23 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $auth = Auth::user();
+        try {
+            $data = Kegiatan::create([
+                'id_tujuan' => $request->id_tujuan,
+                'id_target' => $request->id_target,
+                'id_indikator' => $request->id_indikator,
+                'id_program' => $request->id_program,
+                'nama_kegiatan' => $request->nama_kegiatan,
+                'pelaku' => $request->pelaku,
+                'anggaran' => $request->anggaran,
+                'tahun' => $request->tahun,
+                'created_by' => $auth->id,
+            ]);
+            return redirect()->back()->with('success', 'Berhasil Disimpan');
+        } catch (QueryException $ex) {
+            return redirect()->back()->with('error', $ex->getMessage());
+        }
     }
 
     /**
