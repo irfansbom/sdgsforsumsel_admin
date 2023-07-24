@@ -90,7 +90,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer">
+                        {{-- <div class="card-footer">
                             <div class="d-flex justify-content-center my-3">
                                 <a href="" class="social-login  text-center me-4">
                                     <i class="fa fa-instagram"></i>
@@ -102,7 +102,7 @@
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- CONTAINER CLOSED -->

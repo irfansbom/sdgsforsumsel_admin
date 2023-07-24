@@ -78,7 +78,6 @@
                                     </div>
                                 @endisset
 
-
                                 @if ($data->count() > 0)
                                     <div class="table-responsive">
                                         <table

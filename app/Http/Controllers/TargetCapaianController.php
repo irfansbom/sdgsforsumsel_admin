@@ -28,6 +28,8 @@ class TargetCapaianController extends Controller
         $indikators = Indikator::where('id_target', $filter_target)->get();
         $select_indikator = Indikator::where('id_indikator', $filter_indikator)->first();
         $data = TargetCapaian::where('id_indikator', $filter_indikator)->orderby('tahun')->orderby('kd_wilayah')->paginate(15);
+
+        $data->appends($request->all());
         return view('target_capaian.index', compact('auth', 'kabs', 'tujuans', 'targets', 'indikators', 'select_indikator', 'data', 'kabs'));
     }
 
